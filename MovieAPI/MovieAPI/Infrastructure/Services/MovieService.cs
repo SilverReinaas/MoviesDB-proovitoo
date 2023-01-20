@@ -9,19 +9,24 @@ namespace MovieAPI.Infrastructure.Services
 {
     public class MovieService : IMovieService
     {
+        private readonly IMovieRepository movieRepository;
+        public MovieService(IMovieRepository movieRepository)
+        {
+            this.movieRepository = movieRepository;
+        }
         public List<Movie> GetMovies()
         {
-            return MovieRepository.GetMovies();
+            return movieRepository.GetMovies();
         }
 
         public Movie GetMovieById(int id)
         {
-            return MovieRepository.GetMovieById(id);
+            return movieRepository.GetMovieById(id);
         }
 
         public List<Category> GetCategories()
         {
-            return MovieRepository.GetCategories();
+            return movieRepository.GetCategories();
         }
     }
 }

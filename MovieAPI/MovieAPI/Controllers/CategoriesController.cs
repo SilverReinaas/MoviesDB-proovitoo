@@ -17,9 +17,9 @@ namespace MovieAPI.Controllers
     {
         private IMovieService movieService;
 
-        public CategoriesController(IMovieService _movieService)
+        public CategoriesController(IMovieService movieService)
         {
-            movieService = _movieService;
+            this.movieService = movieService;
         }
 
         // GET: api/<CategoriesController>

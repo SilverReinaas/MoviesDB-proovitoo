@@ -1,17 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using MovieAPI.Infrastructure.Repositories;
 using MovieAPI.Infrastructure.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MovieAPI
 {
@@ -34,7 +28,8 @@ namespace MovieAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "MovieAPI", Version = "v1" });
             });
 
-            services.AddScoped<IMovieService, MovieService>();
+            services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IMovieService, MovieService>();            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

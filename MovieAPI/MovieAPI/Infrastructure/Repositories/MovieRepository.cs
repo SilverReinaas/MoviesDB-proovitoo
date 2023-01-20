@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MovieAPI.Infrastructure.Repositories
 {
-    public static class MovieRepository
+    public class MovieRepository : IMovieRepository
     {
-        private static List<Movie> movies = new List<Movie>
+        private List<Movie> movies = new List<Movie>
         {
             new Movie{ Id = 1, Title = "The Shawshank Redemption", Rating = 9, Year = 1994, CategoryId = 1, Description =  "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency."},
             new Movie{ Id = 2, Title = "The Godfather", Rating = 9, Year = 1972, CategoryId = 2, Description = "The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son." },
@@ -21,7 +21,7 @@ namespace MovieAPI.Infrastructure.Repositories
             new Movie{ Id = 9, Title = "Fight club", Rating = 10, Year = 1999, CategoryId = 1, Description = "An insomniac office worker and a devil-may-care soap maker form an underground fight club that evolves into much more." }
         };
 
-        private static List<Category> categories = new List<Category>
+        private List<Category> categories = new List<Category>
         {
             new Category{ Id = 1, Name = "Drama" },
             new Category{ Id = 2, Name = "Crime" },
@@ -29,22 +29,22 @@ namespace MovieAPI.Infrastructure.Repositories
             new Category{ Id = 4, Name = "History" }
         };
 
-        public static List<Movie> GetMovies()
+        public List<Movie> GetMovies()
         {
             return movies;
         }
 
-        public static Movie GetMovieById(int id)
+        public Movie GetMovieById(int id)
         {
             return movies.FirstOrDefault(x => x.Id == id);
         }
 
-        public static List<Category> GetCategories()
+        public List<Category> GetCategories()
         {
             return categories;
         }
 
-        public static Category GetCategoryById(int id)
+        public Category GetCategoryById(int id)
         {
             return categories.FirstOrDefault(x => x.Id == id);
         }
