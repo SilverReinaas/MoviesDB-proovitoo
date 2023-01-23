@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MoviesView from '../views/MoviesView'
-import MovieDetailsView from '../views/MovieDetailsView'
+import MoviesView from '../views/Movies/MoviesView'
+import MovieDetailsView from '../views/MovieDetails/MovieDetailsView'
 
 const routes = [
   {
