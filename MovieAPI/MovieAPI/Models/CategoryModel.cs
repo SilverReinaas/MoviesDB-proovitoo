@@ -12,7 +12,7 @@ namespace MovieAPI.Models
 
         public static CategoryModel CategoryToModel(Category category)
         {
-            return new CategoryModel() { Name = category.Name };
+            return new CategoryModel() { Name = category.Name ?? "" };
         }
     }
 }

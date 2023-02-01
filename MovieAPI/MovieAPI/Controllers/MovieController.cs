@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MovieAPI.Infrastructure.Services;
 using MovieAPI.Models;
@@ -41,14 +42,16 @@ namespace MovieAPI.Controllers{
 
         // GET api/movies/5
         [HttpGet("{id}")]
-        public ActionResult<MovieDetailsModel> Get(int id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(MovieDetailsModel))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Get(int id)
         {
             var movie = movieService.GetMovieById(id);
             if(movie == null)
             {
                 return NotFound();
             }
-            return MovieDetailsModel.MovieToDetailsModel(movie);
+            return Ok(MovieDetailsModel.MovieToDetailsModel(movie));
         }
 
     }
